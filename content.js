@@ -1,7 +1,3 @@
-//       btn.innerHTML = `
-//         <img src="chrome-extension://cedkgfpchfhodchgaciiejgebhoimjnh/images/K.png" alt="K" style="width: 24px; height: 24px;">
-//       `;
-
 // Function to add buttons to tweets
 function addButtonToTweets() {
   // Select all tweet action divs
@@ -141,14 +137,17 @@ function findSectionToReplace() {
       `section[aria-labelledby="${sectionId}"]`
     );
     if (section) {
-      // Apply styles to make the section scrollable
-      section.style.overflowY = "auto"; // Enables vertical scrolling
-      section.style.maxHeight = "100vh"; // Sets the maximum height to the viewport height
-      section.style.position = "relative"; // Ensures the section flows within the layout
-      return section;
+      const h1 = section.querySelector('h1');
+      if (h1 && h1.textContent.toLowerCase().includes('trending')) {
+        // Apply styles to make the section scrollable
+        section.style.overflowY = "auto"; // Enables vertical scrolling
+        section.style.maxHeight = "100vh"; // Sets the maximum height to the viewport height
+        section.style.position = "relative"; // Ensures the section flows within the layout
+        return section;
+      }
     }
   }
-  return null; // Return null if no section was found
+  return null; // Return null if no section with "trending" in a <h1> was found
 }
 
 function applyStylesToSidebar() {
