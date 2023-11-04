@@ -2,6 +2,16 @@
 
 This Chrome extension displays Similar Tweets in the sidebar. Simply click the ⚡ below a tweet.
 
+# How it works
+
+Clicking the ⚡ button opens a tab with the `/similar` for that tweet. It grabs the 10 first Tweets' HTML from the DOM. And adds them to the sidebar, back in the first tab.
+
+# Feature ideas
+
+- Get images from opened tab. (Challenge is that lazy load only loads when user on the website.)
+- Add links to tweets.
+- Instead of clicking the button, get Similar Tweets automatically based on the Tweet that is in view.
+
 ## Installation
 
 To install this extension in your Chrome browser, follow these steps:

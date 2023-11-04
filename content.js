@@ -136,9 +136,16 @@ function findSectionToReplace() {
     const section = document.querySelector(
       `section[aria-labelledby="${sectionId}"]`
     );
+
     if (section) {
-      const h1 = section.querySelector('h1');
-      if (h1 && h1.textContent.toLowerCase().includes('trending')) {
+      // Check for a h1 or h2 with the relevant text
+      const h1 = section.querySelector("h1");
+      const h2 = section.querySelector("h2");
+
+      if (
+        (h1 && h1.textContent.toLowerCase().includes("trending")) ||
+        (h2 && h2.textContent.toLowerCase().includes("similar tweets"))
+      ) {
         // Apply styles to make the section scrollable
         section.style.overflowY = "auto"; // Enables vertical scrolling
         section.style.maxHeight = "100vh"; // Sets the maximum height to the viewport height
@@ -147,7 +154,7 @@ function findSectionToReplace() {
       }
     }
   }
-  return null; // Return null if no section with "trending" in a <h1> was found
+  return null; // Return null if no matching section was found
 }
 
 function applyStylesToSidebar() {
